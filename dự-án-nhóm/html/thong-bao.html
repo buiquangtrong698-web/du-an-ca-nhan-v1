@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông báo - Orange Team</title>
+    <link rel="stylesheet" href="../css/chung.css?v=20261117-account-avatar">
+    <link rel="stylesheet" href="../css/thong-bao.css">
+    <script src="../frontend/js/auth.js" defer></script>
+    <script src="../js/chung.js" defer></script>
+    <script src="../js/thong-bao.js" defer></script>
+    <script src="../js/admin-permissions.js" defer></script>
+</head>
+<body>
+
+<header class="header">
+    <a href="trang-chu.html" class="logo">
+        <img src="../Images/logo.png" alt="Logo Orange's House">
+        <span>ORANGE'S HOUSE</span>
+    </a>
+
+    <nav class="navbar">
+        <a href="trang-chu.html">Trang chủ</a>
+        <a href="quy-dinh-nhom.html">Quy định</a>
+        <a href="thanh-vien-nhom.html">Thành viên</a>
+        <a class="active" href="thong-bao.html">Thông báo</a>
+        <a href="dien-dan/dien-dan.html">Diễn đàn</a>
+            
+    </nav>
+</header>
+
+<main class="page-container notification-page">
+    <section class="notification-heading">
+        <div class="notification-heading-icon" aria-hidden="true">🔔</div>
+        <span class="eyebrow">ORANGE TEAM BOARD</span>
+        <h1>BẢNG THÔNG BÁO</h1>
+        <p>Cập nhật tin tức và hoạt động mới nhất của nhóm.</p>
+    </section>
+
+    <section class="notification-panel" aria-label="Danh sách thông báo">
+        <div class="notification-panel-header">
+            <div>
+                <h2>Tin mới nhất</h2>
+                <p>Các thông báo dành cho thành viên Orange Team</p>
+            </div>
+            <div class="notification-panel-actions">
+                <button class="manage-button" id="openNotificationDialog" type="button">
+                    ＋ Thêm thông báo
+                </button>
+                <span class="notification-count" id="notificationCount">04 thông báo</span>
+            </div>
+        </div>
+        <p class="notification-status" id="notificationStatus" role="status" aria-live="polite"></p>
+        <p class="notification-status" id="notificationSyncStatus" role="status" aria-live="polite"></p>
+
+        <div class="notification-list">
+            <details class="notification-card is-new">
+                <summary class="notification-summary">
+                    <span class="notification-icon icon-event" aria-hidden="true">📅</span>
+                    <span class="notification-content">
+                        <span class="notification-meta">
+                            <span class="notification-category">Sự kiện</span>
+                            <span class="new-label"><span></span>Mới</span>
+                        </span>
+                        <span class="notification-title">Buổi giao lưu cuối tuần</span>
+                        <time datetime="2026-11-12">Hôm nay</time>
+                    </span>
+                    <span class="notification-arrow" aria-hidden="true">›</span>
+                </summary>
+                <div class="notification-details">
+                    <p>Cùng tham gia trò chuyện và chơi game với các thành viên trong nhóm nhé!</p>
+                </div>
+            </details>
+
+            <details class="notification-card is-new">
+                <summary class="notification-summary">
+                    <span class="notification-icon icon-group" aria-hidden="true">👥</span>
+                    <span class="notification-content">
+                        <span class="notification-meta">
+                            <span class="notification-category">Cộng đồng</span>
+                            <span class="new-label"><span></span>Mới</span>
+                        </span>
+                        <span class="notification-title">Chào mừng thành viên mới</span>
+                        <time datetime="2026-11-11">Hôm qua</time>
+                    </span>
+                    <span class="notification-arrow" aria-hidden="true">›</span>
+                </summary>
+                <div class="notification-details">
+                    <p>Orange Team vui mừng chào đón các thành viên mới. Hãy cùng làm quen và kết nối!</p>
+                </div>
+            </details>
+
+            <details class="notification-card">
+                <summary class="notification-summary">
+                    <span class="notification-icon icon-forum" aria-hidden="true">💬</span>
+                    <span class="notification-content">
+                        <span class="notification-meta">
+                            <span class="notification-category">Diễn đàn</span>
+                        </span>
+                        <span class="notification-title">Phòng trò chuyện đã sẵn sàng</span>
+                        <time datetime="2026-11-10">10/11/2026</time>
+                    </span>
+                    <span class="notification-arrow" aria-hidden="true">›</span>
+                </summary>
+                <div class="notification-details">
+                    <p>Ghé thăm diễn đàn và chọn một phòng theo chủ đề để giao lưu cùng mọi người.</p>
+                    <a class="notification-action-link" href="dien-dan/dien-dan.html">Mở trang chọn diễn đàn</a>
+                </div>
+            </details>
+
+            <details class="notification-card">
+                <summary class="notification-summary">
+                    <span class="notification-icon icon-rules" aria-hidden="true">📌</span>
+                    <span class="notification-content">
+                        <span class="notification-meta">
+                            <span class="notification-category">Nhắc nhở</span>
+                        </span>
+                        <span class="notification-title">Cùng giữ không khí vui vẻ, tôn trọng</span>
+                        <time datetime="2026-11-08">08/11/2026</time>
+                    </span>
+                    <span class="notification-arrow" aria-hidden="true">›</span>
+                </summary>
+                <div class="notification-details">
+                    <p>Đừng quên xem các quy định để xây dựng một cộng đồng thân thiện và đoàn kết.</p>
+                    <a class="notification-action-link" href="quy-dinh-nhom.html">Xem quy định nhóm</a>
+                </div>
+            </details>
+        </div>
+        <div class="notification-pagination">
+            <button class="notification-load-more" id="loadMoreNotifications" type="button" hidden>
+                Tải thêm thông báo cũ
+            </button>
+        </div>
+    </section>
+
+    <dialog class="editor-dialog" id="notificationDialog" aria-labelledby="notificationDialogTitle">
+        <div class="editor-dialog-header">
+            <h2 id="notificationDialogTitle">Thêm thông báo mới</h2>
+            <button class="editor-close-button" id="closeNotificationDialog" type="button"
+                    aria-label="Đóng">×</button>
+        </div>
+        <form class="editor-form notification-editor-form" id="notificationForm">
+            <label for="newNotificationTitle">Tiêu đề</label>
+            <input id="newNotificationTitle" name="title" type="text" maxlength="100"
+                   placeholder="Nhập tiêu đề thông báo..." required>
+
+            <label for="newNotificationCategory">Loại thông báo</label>
+            <input id="newNotificationCategory" name="category" type="text" maxlength="40"
+                   value="Thông báo" placeholder="Ví dụ: Sự kiện">
+
+            <label for="newNotificationDescription">Nội dung</label>
+            <textarea id="newNotificationDescription" name="description" rows="6" maxlength="5000"
+                      placeholder="Nhập nội dung thông báo..." required></textarea>
+
+            <p class="editor-form-message" id="notificationFormMessage" role="status"
+               aria-live="polite"></p>
+            <div class="editor-form-actions">
+                <button class="editor-cancel-button" id="cancelNotification" type="button">Hủy</button>
+                <button class="manage-button" type="submit">Thêm thông báo</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+
+<footer>
+    <p>© 2026 ORANGE'S HOUSE | nhóm giao lưu vui vẻ</p>
+    <p>mọi người có thể tham gia nhóm discor hoặc message cảu nhóm để giao lưu thêm</p>
+</footer>
+
+</body>
+</html>

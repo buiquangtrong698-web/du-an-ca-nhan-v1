@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Thiết lập tiếng Việt, hiển thị thích ứng trên màn hình nhỏ và tiêu đề của phòng Làng Vịt. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn đàn Làng Vịt</title>
+    <!-- Nạp giao diện diễn đàn và script dùng cho menu/đăng bài. -->
+    <link rel="stylesheet" href="../../css/chung.css?v=20261117-account-avatar">
+    <link rel="stylesheet" href="../../css/dien-dan.css?v=20261117-5">
+    <script src="../../frontend/js/auth.js" defer></script>
+    <script src="../../js/chung.js" defer></script>
+    <script src="../../js/dien-dan.js" defer></script>
+</head>
+<body class="forum-page">
+<!-- Đầu trang chứa logo và điều hướng đến các trang chính của website. -->
+<header class="header">
+    <a href="../trang-chu.html" class="logo">
+        <img src="../../Images/logo.png" alt="Logo Orange's House">
+        <span>ORANGE'S HOUSE</span>
+    </a>
+    <nav class="navbar">
+        <a href="../trang-chu.html">Trang chủ</a>
+        <a href="../quy-dinh-nhom.html">Quy định</a>
+        <a href="../thanh-vien-nhom.html">Thành viên</a>
+        <a href="../thong-bao.html">Thông báo</a>
+        <a class="active" href="dien-dan.html">Diễn đàn</a>
+    </nav>
+</header>
+
+<!-- Nội dung chính của phòng đăng bài Làng Vịt. -->
+<main class="forum-container">
+    <!-- Tiêu đề, biểu tượng và lời giới thiệu ngắn cho chủ đề phòng. -->
+    <div class="forum-heading">
+        <span class="forum-icon">🦆</span>
+        <h1>DIỄN ĐÀN LÀNG VỊT</h1>
+        <p>Nơi trò chuyện, vui chơi và chia sẻ những khoảnh khắc thú vị.</p>
+    </div>
+
+    <div class="forum-room-layout">
+        <section class="forum-feed" aria-label="Bài đăng Làng Vịt">
+            <div class="posts-toolbar">
+                <p class="posts-feedback" id="postsFeedback" role="status" aria-live="polite"></p>
+                <button class="create-post-button" id="openPostDialog" type="button">＋ Tạo bài đăng</button>
+            </div>
+
+            <dialog class="post-dialog" id="postDialog" aria-labelledby="post-composer-title">
+                <div class="post-dialog-header">
+                    <h2 class="post-composer-title" id="post-composer-title">✍️ Tạo bài viết</h2>
+                    <button class="post-dialog-close" id="closePostDialog" type="button" aria-label="Đóng">×</button>
+                </div>
+                <form class="post-form" id="postForm">
+                    <label for="postContent">Nội dung bài viết</label>
+                    <textarea id="postContent" name="content" rows="5" maxlength="5000"
+                              placeholder="Bạn muốn chia sẻ điều gì?" required></textarea>
+
+                    <div class="post-image-control">
+                        <input class="post-image-input" id="postImages" type="file"
+                               accept="image/*" multiple>
+                        <label class="post-image-button" for="postImages">🖼️ Thêm ảnh</label>
+                        <span class="post-image-status" id="postImageStatus">Có thể chọn tối đa 4 ảnh.</span>
+                    </div>
+                    <div class="post-image-preview" id="postImagePreview"></div>
+
+                    <div class="post-form-footer">
+                        <p class="post-form-message" id="postFormMessage" role="status" aria-live="polite"></p>
+                        <div class="post-form-actions">
+                            <button class="post-cancel-button" id="cancelPost" type="button">Hủy</button>
+                            <button class="post-submit-button" type="submit">Đăng bài</button>
+                        </div>
+                    </div>
+                </form>
+            </dialog>
+
+            <section class="posts-section" aria-labelledby="posts-heading">
+                <div class="posts-heading">
+                    <h2 id="posts-heading">Bài viết trong phòng</h2>
+                    <span class="post-count" id="postCount"></span>
+                </div>
+                <div class="posts-list" id="postsList"></div>
+                <p class="posts-empty" id="emptyPosts">Chưa có bài viết nào trong phòng này.</p>
+            </section>
+
+            <a class="back-link" href="dien-dan.html">← Quay lại danh sách diễn đàn</a>
+        </section>
+
+        <aside class="forum-sidebar" aria-label="Các phòng diễn đàn">
+            <section class="forum-sidebar-card forum-room-menu">
+                <span class="forum-section-eyebrow">ORANGE TEAM</span>
+                <h2>Các phòng diễn đàn</h2>
+                <nav class="forum-room-links" aria-label="Chọn phòng">
+                    <a href="dien-dan-lien-quan.html"><span aria-hidden="true">⚔️</span> Liên Quân</a>
+                    <a class="is-active" href="dien-dan-lang-vit.html"><span aria-hidden="true">🦆</span> Làng Vịt</a>
+                    <a href="dien-dan-mobi.html"><span aria-hidden="true">🎮</span> Mobile Legends</a>
+                </nav>
+                <p class="forum-sidebar-note">Chia sẻ vui vẻ và tôn trọng mọi thành viên nhé.</p>
+            </section>
+        </aside>
+    </div>
+</main>
+
+<!-- Chân trang của phòng diễn đàn. -->
+<footer>
+    <p>© 2026 ORANGE'S HOUSE | nhóm giao lưu vui vẻ</p>
+    <p>mọi người có thể tham gia nhóm discor hoặc message cảu nhóm để giao lưu thêm</p>
+</footer>
+</body>
+</html>

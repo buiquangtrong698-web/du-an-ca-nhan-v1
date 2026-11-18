@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f97316">
+    <title>Tài khoản - Orange Team</title>
+    <link rel="stylesheet" href="../css/auth.css?v=20261117-level">
+    <script src="../js/auth.js" defer></script>
+    <script src="../../js/dien-dan-cap-do.js" defer></script>
+    <script src="../js/trang-chu.js?v=20261117-level" defer></script>
+</head>
+<body class="auth-page">
+    <main class="auth-layout">
+        <section class="auth-card account-card" aria-labelledby="account-display-name">
+            <a class="auth-brand" href="/html/trang-chu.html">
+                <img src="../../Images/logo.png" alt="">
+                <span>ORANGE'S HOUSE</span>
+            </a>
+            <div class="account-hero">
+                <div class="account-avatar-wrap">
+                    <div class="account-avatar">
+                        <span id="account-avatar-fallback" aria-hidden="true">🍊</span>
+                        <img id="account-avatar-image" alt="" hidden>
+                    </div>
+                    <button id="account-avatar-upload" class="account-avatar-upload" type="button">
+                        Đổi ảnh
+                    </button>
+                    <input id="account-avatar-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+                </div>
+                <div class="account-heading">
+                    <p class="auth-eyebrow">THÔNG TIN CỦA BẠN</p>
+                    <h1 id="account-display-name">Đang tải...</h1>
+                    <p class="auth-intro">Không gian cá nhân của bạn tại Orange Team.</p>
+                </div>
+            </div>
+
+            <dl class="account-details">
+                <div>
+                    <dt>Quyền tài khoản</dt>
+                    <dd id="account-role">Đang tải...</dd>
+                </div>
+            </dl>
+
+            <section class="account-stats" aria-labelledby="account-stats-title">
+                <h2 id="account-stats-title">Hoạt động diễn đàn</h2>
+                <div class="account-stat-grid">
+                    <div class="account-stat">
+                        <span>Bài viết</span>
+                        <strong id="account-post-count">—</strong>
+                    </div>
+                    <div class="account-stat">
+                        <span>Lượt thích</span>
+                        <strong id="account-like-count">—</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="account-level" aria-labelledby="account-level-title">
+                <div class="account-level-heading">
+                    <h2 id="account-level-title">Cấp độ</h2>
+                    <strong id="account-level-value">Đang tải...</strong>
+                </div>
+                <p id="account-level-progress">Đang tính điểm diễn đàn...</p>
+                <div id="account-level-bar" class="account-level-bar" role="progressbar"
+                    aria-label="Tiến độ trong cấp độ hiện tại" aria-valuemin="0"
+                    aria-valuemax="100" aria-valuenow="0">
+                    <span id="account-level-fill"></span>
+                </div>
+            </section>
+
+            <section id="account-achievements" class="account-achievements" aria-labelledby="account-achievements-title" hidden>
+                <h2 id="account-achievements-title">Danh hiệu diễn đàn</h2>
+                <ul id="account-badges" class="account-badges"></ul>
+            </section>
+
+            <p id="form-message" class="auth-message" role="status" aria-live="polite"></p>
+            <div class="account-actions">
+                <a class="auth-submit auth-link-button" href="/html/trang-chu.html">Vào trang chủ</a>
+                <button id="logout-button" class="auth-secondary" type="button">Đăng xuất</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

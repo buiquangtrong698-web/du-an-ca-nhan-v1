@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f97316">
+    <title>Đăng ký - Orange Team</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/dang-ky.js" defer></script>
+</head>
+<body class="auth-page">
+    <main class="auth-layout">
+        <section class="auth-card" aria-labelledby="page-title">
+            <a class="auth-brand" href="/" aria-label="Orange Team">
+                <img src="../../Images/logo.png" alt="">
+                <span>ORANGE'S HOUSE</span>
+            </a>
+            <p class="auth-eyebrow">GIA NHẬP ORANGE TEAM</p>
+            <h1 id="page-title">Tạo tài khoản</h1>
+            <p class="auth-intro">Tạo tài khoản để cùng tham gia và lưu giữ những kỷ niệm.</p>
+
+            <form id="register-form" class="auth-form">
+                <label for="username">Tên đăng nhập</label>
+                <input id="username" name="username" type="text" autocomplete="username"
+                    minlength="3" maxlength="32" pattern="[A-Za-z0-9_]+" required
+                    aria-describedby="username-hint"
+                    title="Chỉ dùng chữ không dấu, chữ số và dấu gạch dưới.">
+                <small id="username-hint" class="auth-hint">
+                    Dùng 3-32 chữ không dấu (A-Z), chữ số hoặc dấu gạch dưới.
+                </small>
+
+                <label for="display-name">Tên hiển thị</label>
+                <input id="display-name" name="display_name" type="text" autocomplete="name" maxlength="60">
+
+                <label for="password">Mật khẩu</label>
+                <input id="password" name="password" type="password" autocomplete="new-password"
+                    minlength="10" maxlength="128" required>
+                <small class="auth-hint">Mật khẩu cần có ít nhất 10 ký tự.</small>
+
+                <label for="password-confirmation">Nhập lại mật khẩu</label>
+                <input id="password-confirmation" name="password_confirmation" type="password"
+                    autocomplete="new-password" minlength="10" maxlength="128" required>
+
+                <p id="form-message" class="auth-message" role="status" aria-live="polite"></p>
+                <button class="auth-submit" type="submit">Đăng ký</button>
+            </form>
+
+            <p class="auth-switch">Đã có tài khoản?
+                <a data-auth-destination="dang-nhap" href="/frontend/html/dang-nhap.html">Đăng nhập</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>

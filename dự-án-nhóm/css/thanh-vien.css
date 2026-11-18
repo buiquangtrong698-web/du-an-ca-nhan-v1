@@ -1,0 +1,294 @@
+
+body {
+    background: url("../Images/background.png") center / cover fixed no-repeat;
+}
+
+/* Hiển thị các thẻ thành viên thành lưới bốn cột trên màn hình rộng. */
+.members-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.member-entry {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 9px;
+}
+
+/* Kiểu thẻ thành viên dạng nút: nền trắng, bo góc, chữ căn giữa và con trỏ bấm. */
+.member-card {
+    width: 100%;
+    background: white;
+    padding: 30px 15px;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color: #292524;
+}
+
+.member-entry-actions {
+    justify-content: center;
+}
+
+.member-entry-actions .entry-action-button {
+    flex: 1;
+}
+
+.member-card-leader {
+    position: relative;
+    border-color: transparent;
+}
+
+.leader-crown {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 42px;
+    line-height: 1;
+}
+
+/* Hiệu ứng khi rê chuột để làm rõ thẻ có thể được nhấn mở hồ sơ. */
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: #FB923C;
+    box-shadow: 0 15px 30px rgba(249,115,22,0.15);
+}
+
+/* Tạo vùng avatar hình tròn, dùng nền chuyển sắc và căn biểu tượng vào giữa. */
+.member-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FED7AA, #FB923C);
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    border: 5px solid #FFF0DD;
+}
+
+/* Cỡ chữ tên thành viên trên thẻ. */
+.member-card h2 {
+    font-size: 18px;
+}
+
+/* Biệt danh dùng màu phụ và khoảng cách riêng với tên/vai trò. */
+.nickname {
+    color: #78716C;
+    margin: 8px 0 15px;
+}
+
+/* Nhãn vai trò dạng viên thuốc màu cam nhạt. */
+.member-role {
+    display: inline-block;
+    background: #FFF0DD;
+    color: #EA580C;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Lời nhắc mở hồ sơ hiển thị dưới thông tin tóm tắt. */
+.view-detail {
+    display: block;
+    margin-top: 18px;
+    color: #F97316;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Lớp phủ toàn màn hình cho cửa sổ hồ sơ; mặc định ẩn cho đến khi có class show. */
+.member-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(41, 37, 36, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Khi được JavaScript thêm class show, căn cửa sổ ra giữa và chạy hiệu ứng nền. */
+.member-modal.show {
+    display: flex;
+    animation: hienNen 0.3s ease;
+}
+
+/* Khung hồ sơ ở giữa lớp phủ; giới hạn chiều cao và cho phép cuộn nội dung dài. */
+.modal-content {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: hienHop 0.35s ease;
+}
+
+/* Nút đóng ở góc trên bên phải khung hồ sơ. */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: #FFF0DD;
+    color: #EA580C;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* Đổi màu nút đóng khi rê chuột. */
+.close-modal:hover {
+    background: #F97316;
+    color: white;
+}
+
+/* Avatar lớn trong hồ sơ, dùng cùng kiểu chuyển sắc với avatar trên thẻ. */
+.modal-avatar {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FED7AA, #FB923C);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    border: 6px solid #FFF0DD;
+}
+
+/* Nhãn tiếng Anh phía trên tên thành viên, dùng chữ nhỏ và giãn ký tự. */
+.modal-label {
+    color: #F97316;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Kiểu chữ và khoảng cách cho tên trong hồ sơ chi tiết. */
+.modal-content h2 {
+    margin: 10px 0;
+    font-size: 25px;
+}
+
+/* Nhãn chức vụ trong hồ sơ, đồng bộ kiểu viên thuốc với vai trò trên thẻ. */
+.modal-role {
+    display: inline-block;
+    background: #FFF0DD;
+    color: #EA580C;
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Căn trái khu vực thông tin và tạo khoảng cách với phần tên/vai trò. */
+.modal-info {
+    text-align: left;
+    margin-top: 25px;
+}
+
+/* Mỗi thông tin chi tiết nằm trong một khối nền nhạt có viền nhấn bên trái. */
+.info-item {
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #FFFBF5;
+    border-radius: 12px;
+    border-left: 4px solid #F97316;
+}
+
+/* Nhãn của từng trường thông tin như biệt danh, sở thích và giới thiệu. */
+.info-item span {
+    color: #EA580C;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Nội dung trường thông tin; tự ngắt chuỗi dài để không tràn khỏi hộp. */
+.info-item p {
+    margin-top: 7px;
+    color: #57534E;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Nút thao tác ở cuối hồ sơ. */
+.modal-button {
+    padding: 13px;
+    border: none;
+    background: #F97316;
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-actions {
+    display: flex;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+.profile-actions .modal-button {
+    width: 100%;
+}
+
+.modal-button:hover {
+    background: #EA580C;
+    transform: translateY(-3px);
+}
+
+/* Hiệu ứng làm lớp phủ mờ dần khi cửa sổ hồ sơ được mở. */
+@keyframes hienNen {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Hiệu ứng đưa khung hồ sơ lên nhẹ và phóng to về kích thước bình thường. */
+@keyframes hienHop {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Trên màn hình vừa, bố trí hai thẻ thành viên mỗi hàng. */
+@media (max-width: 900px) {
+    .members-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Trên điện thoại, xếp một thẻ mỗi hàng và giảm khoảng đệm hồ sơ. */
+@media (max-width: 500px) {
+    .members-container {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+    }
+}

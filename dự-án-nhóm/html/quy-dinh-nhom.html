@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Thiết lập mã hóa tiếng Việt, hiển thị thích ứng với màn hình và tên trang trên trình duyệt. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy định nhóm</title>
+    <!-- Nạp định dạng chung, định dạng riêng cho trang quy định và JavaScript điều hướng dùng chung. -->
+    <link rel="stylesheet" href="../css/chung.css?v=20261117-account-avatar">
+    <link rel="stylesheet" href="../css/quy-dinh.css?v=20261117-6">
+    <script src="../frontend/js/auth.js" defer></script>
+    <script src="../js/chung.js" defer></script>
+    <script src="../js/quy-dinh.js" defer></script>
+    <script src="../js/admin-permissions.js" defer></script>
+</head>
+<body>
+
+<!-- Phần đầu trang gồm logo liên kết về trang chủ và thanh điều hướng chính. -->
+<header class="header">
+    <!-- Logo thương hiệu; ảnh có alt để hỗ trợ trình đọc màn hình. -->
+    <a href="trang-chu.html" class="logo">
+        <img src="../Images/logo.png" alt="Logo Orange's House">
+        <span>ORANGE'S HOUSE</span>
+    </a>
+
+    <!-- Các liên kết điều hướng; menu diễn đàn chứa thêm liên kết đến từng phòng. -->
+    <nav class="navbar">
+        <!-- Liên kết đến các trang chính trong website. -->
+        <a href="trang-chu.html">Trang chủ</a>
+        <a class="active" href="quy-dinh-nhom.html">Quy định</a>
+        <a href="thanh-vien-nhom.html">Thành viên</a>
+        <a href="thong-bao.html">Thông báo</a>
+        <a href="dien-dan/dien-dan.html">Diễn đàn</a>
+    </nav>
+</header>
+
+<!-- Khu vực nội dung chính của trang quy định. -->
+<main class="page-container">
+    <!-- Tiêu đề và phần giới thiệu ngắn về mục đích của các quy định. -->
+    <div class="page-title">
+        <span>OUR RULES</span>
+        <h1>QUY ĐỊNH NHÓM</h1>
+        <p>Những quy định giúp nhóm hoạt động vui vẻ và đoàn kết.</p>
+    </div>
+
+    <div class="content-toolbar">
+        <p class="content-status" id="ruleStatus" role="status" aria-live="polite"></p>
+        <button class="manage-button" id="openRuleDialog" type="button">＋ Thêm quy định</button>
+    </div>
+
+    <!-- Danh sách quy định; mỗi thẻ gồm số thứ tự, tiêu đề và nội dung giải thích. -->
+    <div class="rules-container" id="rulesContainer">
+        <!-- Quy định thứ nhất nhấn mạnh sự tôn trọng và hòa đồng giữa các thành viên. -->
+        <div class="rule-card" data-rule-id="default-rule-respect">
+            <div class="rule-number">01</div>
+            <div>
+                <h2>Quy định 1 - Tôn trọng thành viên</h2>
+                <p>
+                    Mọi thành viên cần tôn trọng, hòa đồng,
+                    không xúc phạm hoặc gây mất đoàn kết trong nhóm.
+                </p>
+            </div>
+        </div>
+
+        <!-- Quy định thứ hai nhấn mạnh trách nhiệm tham gia và hỗ trợ hoạt động chung. -->
+        <div class="rule-card" data-rule-id="default-rule-responsibility">
+            <div class="rule-number">02</div>
+            <div>
+                <h2>Quy định 2 - Có trách nhiệm</h2>
+                <p>
+                    Mỗi thành viên cần có trách nhiệm với hoạt động
+                    chung, tích cực tham gia và hỗ trợ các thành viên khác.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lời nhắn kết thúc, khuyến khích mọi người cùng xây dựng tập thể tích cực. -->
+    <div class="rule-note">
+        🍊 Cùng nhau xây dựng một tập thể văn minh và đoàn kết!
+    </div>
+
+    <dialog class="editor-dialog" id="ruleDialog" aria-labelledby="ruleDialogTitle">
+        <div class="editor-dialog-header">
+            <h2 id="ruleDialogTitle">Thêm quy định mới</h2>
+            <button class="editor-close-button" id="closeRuleDialog" type="button" aria-label="Đóng">×</button>
+        </div>
+        <form class="editor-form" id="ruleForm">
+            <label for="ruleTitle">Tên quy định</label>
+            <input id="ruleTitle" name="title" type="text" maxlength="100"
+                   placeholder="Ví dụ: Tôn trọng mọi người" required>
+
+            <label for="ruleDescription">Nội dung</label>
+            <textarea id="ruleDescription" name="description" rows="4" maxlength="1000"
+                      placeholder="Nhập nội dung quy định..." required></textarea>
+
+            <p class="editor-form-message" id="ruleFormMessage" role="status" aria-live="polite"></p>
+            <div class="editor-form-actions">
+                <button class="editor-cancel-button" id="cancelRule" type="button">Hủy</button>
+                <button class="manage-button" id="saveRuleButton" type="submit">Thêm quy định</button>
+            </div>
+        </form>
+    </dialog>
+</main>
+
+<!-- Chân trang hiển thị tên nhóm và khẩu hiệu. -->
+<footer>
+    <p>© 2026 ORANGE'S HOUSE | nhóm giao lưu vui vẻ</p>
+    <p>mọi người có thể tham gia nhóm discor hoặc message cảu nhóm để giao lưu thêm</p>
+</footer>
+</body>
+</html>

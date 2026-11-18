@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f97316">
+    <title>Đăng nhập - Orange Team</title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/dang-nhap.js" defer></script>
+</head>
+<body class="auth-page">
+    <main class="auth-layout">
+        <section class="auth-card" aria-labelledby="page-title">
+            <a class="auth-brand" href="/" aria-label="Orange Team">
+                <img src="../../Images/logo.png" alt="">
+                <span>ORANGE'S HOUSE</span>
+            </a>
+            <p class="auth-eyebrow">CHÀO MỪNG TRỞ LẠI</p>
+            <h1 id="page-title">Đăng nhập</h1>
+            <p class="auth-intro">Đăng nhập để tiếp tục vào không gian Orange Team.</p>
+
+            <form id="login-form" class="auth-form">
+                <label for="username">Tên đăng nhập</label>
+                <input id="username" name="username" type="text" autocomplete="username"
+                    minlength="3" maxlength="32" required>
+
+                <label for="password">Mật khẩu</label>
+                <input id="password" name="password" type="password" autocomplete="current-password"
+                    maxlength="128" required>
+
+                <p id="form-message" class="auth-message" role="status" aria-live="polite"></p>
+                <button class="auth-submit" type="submit">Đăng nhập</button>
+            </form>
+
+            <p class="auth-switch">Chưa có tài khoản?
+                <a data-auth-destination="dang-ky" href="/frontend/html/dang-ky.html">Đăng ký</a>
+            </p>
+        </section>
+    </main>
+</body>
+</html>
