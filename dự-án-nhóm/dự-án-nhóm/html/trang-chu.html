@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<!-- Nội dung trang được viết bằng tiếng Việt. -->
+<html lang="vi">
+<head>
+    <!-- Khai báo mã hóa tiếng Việt, cấu hình hiển thị trên thiết bị di động và tiêu đề tab trình duyệt. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Orange Team</title>
+    <!-- Nạp giao diện dùng chung trước, sau đó nạp phần định dạng riêng của trang chủ. -->
+    <link rel="stylesheet" href="../css/chung.css?v=20261117-account-avatar">
+    <link rel="stylesheet" href="../css/trang-chu.css?v=20261117-3">
+    <!-- defer trì hoãn thực thi đến khi HTML được phân tích xong; chung.js xử lý chức năng dùng chung. -->
+    <script src="../frontend/js/auth.js" defer></script>
+    <script src="../js/chung.js" defer></script>
+</head>
+<body>
+
+<!-- Phần đầu trang gồm logo liên kết về trang chủ và thanh điều hướng chính. -->
+<header class="header">
+    <!-- Logo thương hiệu; ảnh có alt để hỗ trợ trình đọc màn hình. -->
+    <a href="trang-chu.html" class="logo">
+        <img src="../Images/logo.png" alt="Logo Orange's House">
+        <span>ORANGE'S HOUSE</span>
+    </a>
+
+    <!-- Các liên kết điều hướng; menu diễn đàn chứa thêm liên kết đến từng phòng. -->
+    <nav class="navbar">
+        <!-- Liên kết đến các trang chính trong website. -->
+        <a class="active" href="trang-chu.html">Trang chủ</a>
+        <a href="quy-dinh-nhom.html">Quy định</a>
+        <a href="thanh-vien-nhom.html">Thành viên</a>
+        <a href="thong-bao.html">Thông báo</a>
+        <a href="dien-dan/dien-dan.html">Diễn đàn</a>
+        
+    </nav>
+</header>
+
+
+<!-- Nội dung chính của trang, gồm phần mở đầu, giới thiệu chức năng và lời mời tham gia. -->
+<main>
+    <!-- Phần mở đầu nổi bật: giới thiệu tên nhóm, lời chào và lối tắt đến thành viên/diễn đàn. -->
+    <section class="hero">
+        <!-- Nội dung chữ trong phần mở đầu. -->
+        <div class="hero-content">
+            <div class="hero-text">
+                <!-- Tiêu đề chính; span tách tên nhóm để CSS có thể tạo màu và xuống dòng riêng. -->
+                <h1>
+                    WELCOME TO 
+                    <span>ORANGE'S HOUSE</span>
+                </h1>
+
+                <!-- Lời chào ngắn hiển thị dưới tiêu đề chính. -->
+                <h2>
+                    <i>Hello Bồ!</i>
+                </h2>
+            </div>
+
+            <!-- Hình logo và khẩu hiệu trang trí ở cột bên phải của hero. -->
+            <div class="hero-image">
+                <div class="orange-circle">
+                    <img src="../Images/logo.png" alt="Logo Orange's House">
+                </div>
+                <div class="floating-text">FAMILY ORANGE'S</div>
+            </div>
+        </div>
+
+    </section>
+
+    <nav class="section-tabs" aria-label="Điều hướng nội dung trang chủ">
+        <a href="#about-section">Về chúng tôi</a>
+        <a href="#members-section">Thành viên</a>
+        <a href="#forum-section">Diễn đàn</a>
+    </nav>
+
+    <!-- Giới thiệu nhóm và các giá trị chính qua những thẻ nội dung. -->
+    <section class="about" id="about-section">
+        <!-- Nhãn tiếng Anh và tiêu đề tiếng Việt của khu vực giới thiệu. -->
+        <div class="section-title">
+            <span>WHO WE ARE</span>
+            <h2>VỀ CHÚNG TÔI</h2>
+        </div>
+
+        <!-- Lưới thẻ: thẻ đầu tiên giới thiệu chung; ba thẻ sau trình bày mục tiêu, giá trị và giải trí. -->
+        <div class="about-cards">
+            <div class="about-card">
+                <div class="card-icon">🫅</div>
+                <h3>giới thiệu</h3>
+                <p>
+                    🍊 GIỚI THIỆU ORANGE TEAM
+                        ORANGE TEAM là một tập thể tấu hài, năng động và nhiệt huyết, nơi các thành viên cùng nhau giao lưu trao đổi, nói chuyện và chơi game
+                        Với tinh thần đoàn kết, sáng tạo và trách nhiệm, chúng mình luôn sẵn sàng hỗ trợ nhau, cùng vượt qua thử thách và tạo nên những kỷ niệm đáng nhớ.
+                        <strong>ORANGE TEAM – Nơi tạo ra nụ cười</strong>
+                </p>
+            </div>
+
+            <div class="about-card about-card-goal">
+                <div class="card-icon">🎯</div>
+                <h3>mục tiêu</h3>
+                <p>hướng đến cộng đồng vui vẻ chill chill và ăn hại</p>
+            </div>
+
+            <div class="about-card about-card-values">
+                <div class="card-icon">❤️</div>
+                <h3>giá trị</h3>
+                <p>giao lưu vui vẻ và chia sẻ những câu chuyện cảu bản thân</p>
+            </div>
+
+            <div class="about-card about-card-entertainment">
+                <div class="card-icon">🎮</div>
+                <h3>Giải trí</h3>
+                <p>Giao lưu, chia sẻ sở thích và tạo ra những kỷ niệm.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phần riêng giới thiệu chức năng thành viên. -->
+    <section class="features" id="members-section">
+        <div class="section-title">
+            <span>Meet the Members</span>
+            <h2>TÌM HIỂU THÀNH VIÊN</h2>
+            <p>Tìm hiểu những gương mặt và cá tính tạo nên Orange's House.</p>
+        </div>
+
+        <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">👥</div>
+            <div class="feature-copy">
+                <span class="feature-label">KẾT NỐI CỘNG ĐỒNG</span>
+                <h3>Khám phá các thành viên</h3>
+                <p>Xem danh sách thành viên, tìm hiểu biệt danh, vai trò, sở thích và phần giới thiệu của từng người. Nhấn vào hồ sơ để xem chi tiết; thành viên được phân quyền còn có thể thêm hoặc cập nhật thông tin.</p>
+                <a class="feature-link" href="thanh-vien-nhom.html">Xem trang thành viên <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+    </section>
+
+    <!-- Phần riêng giới thiệu chi tiết các khu vực và hoạt động trên diễn đàn. -->
+    <section class="features features-forum" id="forum-section">
+        <div class="section-title">
+            <span>Explore the Forum</span>
+            <h2>KHÁM PHÁ DIỄN ĐÀN</h2>
+            <p>Nơi mọi người cùng đăng bài, trò chuyện và ghi nhận đóng góp.</p>
+        </div>
+
+        <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">💬</div>
+            <div class="feature-copy">
+                <span class="feature-label">CHIA SẺ VÀ TRÒ CHUYỆN</span>
+                <h3>Cùng tham gia cộng đồng</h3>
+                <p>Đăng bài vào các phòng Liên Quân, Làng Vịt và Mobile Legends; đọc, thích và bình luận bài viết. Diễn đàn còn có bộ lọc bài đăng, bảng xếp hạng và danh hiệu ghi nhận đóng góp của thành viên.</p>
+                <a class="feature-link" href="dien-dan/dien-dan.html">Khám phá diễn đàn <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+    </section>
+
+    <!-- Lời kêu gọi cuối trang, khuyến khích thành viên tham gia chia sẻ trên diễn đàn. -->
+    <section class="welcome">
+        <h2>CHÚNG TA LÀ MỘT GIA ĐÌNH!</h2>
+        <p>Gây cười là một nghệ thuật thì bn là một nghệ sĩ </p>
+        <a href="dien-dan/dien-dan.html" class="btn-primary">Hãy cùng chia sẻ nó nào!</a>
+    </section>
+</main>
+
+<!-- Chân trang hiển thị bản quyền và lời nhắn về các kênh liên hệ của nhóm. -->
+<footer>
+    <p>© 2026 ORANGE'S HOUSE | nhóm giao lưu vui vẻ</p>
+    <p>mọi người có thể tham gia nhóm discor hoặc message cảu nhóm để giao lưu thêm</p>
+</footer>
+
+</body>
+</html>

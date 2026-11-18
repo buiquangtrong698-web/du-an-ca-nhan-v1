@@ -1,0 +1,114 @@
+
+body {
+    background-color: #FFFBF5;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+        url("../Images/quy-dinh.png");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.page-title h1 {
+    color: var(--cam);
+}
+
+/* Xếp các thẻ quy định theo cột và tạo khoảng cách giữa từng thẻ. */
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Thẻ quy định: đặt số thứ tự cạnh nội dung, thêm nền, viền nhấn và bóng nhẹ. */
+.rule-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    border-left: 6px solid var(--cam);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.rule-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Khi rê chuột, dịch thẻ nhẹ sang phải và tăng độ rõ của bóng. */
+.rule-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(249,115,22,0.12);
+}
+
+/* Ô số thứ tự có nền cam nhạt, kích thước cố định và căn số vào giữa. */
+.rule-number {
+    min-width: 75px;
+    height: 75px;
+    border-radius: 18px;
+    background: var(--cam-nhat);
+    color: var(--cam);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Phân cấp tiêu đề mỗi quy định và tạo khoảng cách với phần giải thích. */
+.rule-card h2 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+/* Dùng màu chữ phụ cho phần diễn giải nội dung quy định. */
+.rule-card p {
+    color: #78716C;
+}
+
+/* Khung thông điệp cuối trang, dùng nền và màu chữ cùng tông cam để nhấn mạnh. */
+.rule-note {
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 15px;
+    background: #FFF0DD;
+    color: #C2410C;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Điều chỉnh thẻ quy định cho màn hình nhỏ để nội dung vẫn dễ đọc. */
+@media (max-width: 600px) {
+    /* Căn nội dung về đầu thẻ và giảm khoảng đệm/khoảng cách trên điện thoại. */
+    .rule-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .rule-content {
+        flex: 1;
+    }
+
+    .rule-card .entry-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    /* Thu nhỏ ô số thứ tự để dành thêm chiều rộng cho nội dung. */
+    .rule-number {
+        min-width: 55px;
+        height: 55px;
+        font-size: 21px;
+    }
+
+    /* Giảm cỡ tiêu đề quy định trên màn hình hẹp. */
+    .rule-card h2 {
+        font-size: 17px;
+    }
+}

@@ -1,0 +1,761 @@
+
+/* Xóa khoảng cách mặc định và tính kích thước phần tử bao gồm cả padding, border. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Các màu dùng chung toàn website để giao diện thống nhất và dễ chỉnh sửa. */
+:root {
+    --cam: #F97316;
+    --cam-sang: #FB923C;
+    --cam-nhat: #FFF0DD;
+    --nen: #FFFBF5;
+    --chu: #292524;
+    --trang: #FFFFFF;
+}
+
+/* Thiết lập kiểu chữ, màu nền, màu chữ và khoảng cách dòng mặc định cho toàn trang. */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--nen);
+    color: var(--chu);
+    line-height: 1.6;
+}
+
+/* Liên kết kế thừa màu chữ và không gạch chân; trạng thái tương tác được định dạng riêng bên dưới. */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Thanh đầu trang: giữ logo và điều hướng trên cùng một hàng, cố định khi cuộn. */
+.header {
+    width: 100%;
+    min-height: 75px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 7%;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Kiểu chữ và màu nhận diện của logo. */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--cam);
+}
+
+/* Giữ ảnh logo vừa với chiều cao thanh đầu trang và không làm méo tỷ lệ. */
+.logo img {
+    display: block;
+    max-height: 48px;
+    width: auto;
+}
+
+/* Sắp xếp các mục điều hướng thành hàng ngang, căn giữa theo chiều dọc. */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-nav-menu {
+    display: none;
+}
+
+/* Hiển thị các mục điều hướng cấp đầu như những nút riêng biệt. */
+.navbar > a,
+.navbar > button.account-link,
+.menu-dien-dan > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--cam);
+    border-radius: 30px;
+    background: white;
+    color: var(--chu);
+    font-size: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+/* Tô nổi bật nút đang được rê chuột hoặc tương ứng với trang hiện tại. */
+.navbar > a:hover,
+.navbar > button.account-link:hover,
+.menu-dien-dan > a:hover,
+.navbar > a.active,
+.menu-dien-dan > a.active {
+    border-color: var(--cam);
+    background: var(--cam);
+    color: white;
+}
+
+.navbar > a:focus-visible,
+.navbar > button.account-link:focus-visible,
+.menu-dien-dan > a:focus-visible {
+    outline: 3px solid var(--cam-sang);
+    outline-offset: 3px;
+}
+
+.navbar > button.account-link {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.account-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 7%;
+    z-index: 220;
+    width: min(360px, calc(100vw - 32px));
+    padding: 20px;
+    border: 1px solid #57534E;
+    border-radius: 18px;
+    background: #292524;
+    color: #FFF7ED;
+    box-shadow: 0 16px 40px rgba(41, 37, 36, 0.3);
+}
+
+.account-panel[hidden] {
+    display: none;
+}
+
+.account-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.account-panel-header h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.account-panel-close {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: #44403C;
+    color: #FFF7ED;
+    cursor: pointer;
+    font: inherit;
+    font-size: 23px;
+    line-height: 1;
+}
+
+.account-panel-user {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.account-panel-avatar {
+    position: relative;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    place-items: center;
+    border: 2px solid #FDBA74;
+    border-radius: 50%;
+    background: #FFF0DD;
+    overflow: hidden;
+    font-size: 25px;
+}
+
+.account-panel-avatar-fallback,
+.account-panel-avatar-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.account-panel-avatar-fallback {
+    display: grid;
+    place-items: center;
+}
+
+.account-panel-avatar-image {
+    object-fit: cover;
+}
+
+.account-panel-identity {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    gap: 2px;
+}
+
+.account-panel-avatar-upload {
+    flex: 0 0 auto;
+    padding: 6px 8px;
+    border: 1px solid #57534E;
+    border-radius: 8px;
+    background: transparent;
+    color: #FDBA74;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.account-panel-avatar-upload:hover {
+    background: #44403C;
+    color: white;
+}
+
+.account-panel-avatar-upload:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.account-panel-display-name,
+.account-panel-username {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-panel-display-name {
+    color: white;
+    font-size: 16px;
+}
+
+.account-panel-username {
+    color: #D6D3D1;
+    font-size: 13px;
+}
+
+.account-panel-role {
+    margin: 15px 0;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #44403C;
+    color: #FED7AA;
+    font-size: 14px;
+}
+
+.account-panel-status {
+    margin: 0 0 8px;
+    color: #FDBA74;
+    font-size: 13px;
+}
+
+.account-panel-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 14px;
+    border: 1px solid #FB923C;
+    border-radius: 11px;
+    background: #F97316;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.account-panel-action:hover {
+    border-color: #FDBA74;
+    background: #EA580C;
+}
+
+.account-panel-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 10px;
+    padding: 9px 14px;
+    border: 0;
+    border-top: 1px solid #57534E;
+    border-radius: 0;
+    background: transparent;
+    color: #FDBA74;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+}
+
+.account-panel-logout:hover {
+    background: #44403C;
+    color: white;
+}
+
+.account-panel-logout:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.account-panel-close:focus-visible,
+.account-panel-action:focus-visible,
+.account-panel-avatar-upload:focus-visible,
+.account-panel-logout:focus-visible {
+    outline: 3px solid #FDBA74;
+    outline-offset: 3px;
+}
+
+/* Tạo mốc định vị để menu con được đặt ngay bên dưới mục Diễn đàn. */
+.menu-dien-dan {
+    position: relative;
+}
+
+/* Menu con mặc định ẩn; định vị tuyệt đối, tạo nền trắng, bo góc và đổ bóng. */
+.menu-con {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding-top: 15px;
+    min-width: 180px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+}
+
+/* Hiện danh sách phòng khi người dùng rê chuột lên khu vực menu diễn đàn. */
+.menu-dien-dan:hover .menu-con {
+    display: block;
+}
+
+/* Mỗi lựa chọn trong menu con chiếm một dòng và có vùng bấm rộng. */
+.menu-con a {
+    display: block;
+    padding: 12px 15px;
+    transition: 0.3s;
+}
+
+/* Đổi nền và màu chữ để báo mục menu con đang được trỏ chuột. */
+.menu-con a:hover {
+    background: var(--cam-nhat);
+    color: var(--cam);
+}
+
+/* Kiểu nút chính dùng cho lời kêu gọi hành động trên các trang. */
+.btn-primary {
+    display: inline-block;
+    background: var(--cam);
+    color: white;
+    padding: 13px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Hiệu ứng khi rê chuột: đổi màu, nâng nút lên và thêm bóng. */
+.btn-primary:hover {
+    background: #EA580C;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(249,115,22,0.3);
+}
+
+/* Giới hạn chiều rộng và tạo khoảng đệm cho nội dung các trang nội bộ. */
+.page-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+/* Căn giữa khối tiêu đề trang và tạo khoảng cách với nội dung bên dưới. */
+.page-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+/* Định dạng nhãn nhỏ phía trên tiêu đề chính của trang. */
+.page-title span {
+    color: var(--cam);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+/* Kích thước và khoảng cách của tiêu đề chính trang nội bộ. */
+.page-title h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+/* Dùng màu chữ phụ cho phần mô tả dưới tiêu đề. */
+.page-title p {
+    color: #78716C;
+}
+
+.content-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: -20px 0 24px;
+}
+
+.content-status {
+    margin: 0;
+    color: #B45309;
+    font-size: 14px;
+}
+
+.permission-error,
+.notification-status.permission-error {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #FDA4AF;
+    border-left: 5px solid #E11D48;
+    border-radius: 12px;
+    background: #FFF1F2;
+    color: #9F1239 !important;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(190, 18, 60, 0.12);
+}
+
+.permission-error::before {
+    content: "⚠";
+    flex: 0 0 auto;
+    font-size: 18px;
+}
+
+.manage-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-left: auto;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--cam);
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.manage-button:hover {
+    transform: translateY(-1px);
+    background: #EA580C;
+}
+
+.manage-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.editor-dialog {
+    width: min(560px, calc(100% - 32px));
+    max-height: min(90vh, 760px);
+    margin: auto;
+    padding: 26px;
+    overflow-y: auto;
+    border: 0;
+    border-radius: 20px;
+    color: var(--chu);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+}
+
+.editor-dialog::backdrop {
+    background: rgba(41, 37, 36, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+.editor-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.editor-dialog-header h2 {
+    margin: 0;
+    color: var(--cam);
+    font-size: 23px;
+}
+
+.editor-close-button {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--cam-nhat);
+    color: #C75C12;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.editor-form {
+    display: grid;
+    gap: 10px;
+}
+
+.editor-form label {
+    color: var(--chu);
+    font-weight: bold;
+}
+
+.editor-form input,
+.editor-form textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #E7E5E4;
+    border-radius: 12px;
+    color: var(--chu);
+    font: inherit;
+}
+
+.editor-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.editor-form input:focus,
+.editor-form textarea:focus {
+    border-color: var(--cam);
+    outline: 2px solid rgba(249, 115, 22, 0.15);
+}
+
+.editor-form-message {
+    min-height: 1.4em;
+    margin: 0;
+    color: #B45309;
+    font-size: 13px;
+}
+
+.editor-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.editor-cancel-button {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid #E7E5E4;
+    border-radius: 12px;
+    background: white;
+    color: var(--chu);
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.entry-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.entry-action-button {
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid #FDBA74;
+    border-radius: 10px;
+    background: #FFF7ED;
+    color: #C75C12;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.entry-action-button:hover {
+    background: #FFEDD5;
+}
+
+.entry-action-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Chân trang chung: căn giữa nội dung, nền tối và chữ sáng. */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 25px;
+    background: #292524;
+    color: white;
+    margin-top: 50px;
+}
+
+/* Điều chỉnh bố cục chung cho màn hình hẹp như điện thoại và máy tính bảng. */
+@media (max-width: 768px) {
+    /* Xếp logo và thanh điều hướng thành hai hàng để tránh tràn chiều ngang. */
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    /* Cho phép các liên kết điều hướng xuống dòng và căn giữa trên màn hình nhỏ. */
+    .navbar {
+        display: none;
+    }
+
+    .mobile-nav-menu {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .mobile-nav-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        min-height: 48px;
+        padding: 10px 40px;
+        border: 2px solid #FDBA74;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #FFF7ED, white);
+        color: #C75C12;
+        font: inherit;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(249, 115, 22, 0.12);
+        transition: border-color 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .mobile-nav-trigger::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-nav-menu[open] .mobile-nav-trigger,
+    .mobile-nav-trigger:hover {
+        border-color: var(--cam);
+        box-shadow: 0 8px 20px rgba(249, 115, 22, 0.18);
+    }
+
+    .mobile-nav-trigger:focus-visible,
+    .mobile-nav-options a:focus-visible,
+    .mobile-nav-options button:focus-visible {
+        outline: 3px solid var(--cam-sang);
+        outline-offset: 3px;
+    }
+
+    .mobile-nav-arrow {
+        position: absolute;
+        right: 16px;
+        transition: transform 0.2s;
+    }
+
+    .mobile-nav-menu[open] .mobile-nav-arrow {
+        transform: rotate(180deg);
+    }
+
+    .mobile-nav-options {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        z-index: 200;
+        display: grid;
+        gap: 6px;
+        padding: 8px;
+        border: 1px solid #FDBA74;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 12px 28px rgba(41, 37, 36, 0.16);
+    }
+
+    .mobile-nav-options a,
+    .mobile-nav-options button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 9px 14px;
+        border-radius: 12px;
+        font: inherit;
+        color: var(--chu);
+        background: white;
+        border: 0;
+        font-weight: bold;
+        text-align: center;
+        transition: background 0.2s, color 0.2s;
+        cursor: pointer;
+    }
+
+    .mobile-nav-options a:hover,
+    .mobile-nav-options a.active,
+    .mobile-nav-options button:hover {
+        background: var(--cam-nhat);
+        color: #C75C12;
+    }
+
+    .account-panel {
+        right: 0;
+    }
+
+    /* Thu nhỏ tiêu đề trang trên thiết bị di động. */
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .content-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: -24px;
+    }
+
+    .content-toolbar .manage-button {
+        align-self: flex-end;
+    }
+
+    .editor-dialog {
+        padding: 20px;
+    }
+
+    .editor-form-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .editor-form-actions button {
+        width: 100%;
+    }
+
+    /* Căn menu con về phía phải để menu không bị tràn ra ngoài màn hình. */
+    .menu-con {
+        left: auto;
+        right: 0;
+    }
+}

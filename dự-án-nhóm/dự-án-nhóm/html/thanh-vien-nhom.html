@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- Thiết lập mã hóa tiếng Việt, khả năng co giãn trên thiết bị di động và tiêu đề trang. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thành viên nhóm - Orange Team</title>
+
+    <!-- Tệp CSS dùng chung được tải trước tệp CSS định dạng riêng cho danh sách thành viên. -->
+    <link rel="stylesheet" href="../css/chung.css?v=20261117-account-avatar">
+    <link rel="stylesheet" href="../css/thanh-vien.css">
+
+    <!-- Script giao diện dùng chung và script mở/đóng hồ sơ thành viên; defer chờ HTML tải xong. -->
+    <script src="../frontend/js/auth.js" defer></script>
+    <script src="../js/chung.js" defer></script>
+    <script src="../js/thanh-vien.js" defer></script>
+    <script src="../js/admin-permissions.js" defer></script>
+</head>
+<body>
+
+<!-- Phần đầu trang gồm logo liên kết về trang chủ và thanh điều hướng chính. -->
+<header class="header">
+    <!-- Logo thương hiệu; ảnh có alt để hỗ trợ trình đọc màn hình. -->
+    <a href="trang-chu.html" class="logo">
+        <img src="../Images/logo.png" alt="Logo Orange's House">
+        <span>ORANGE'S HOUSE</span>
+    </a>
+
+    <!-- Các liên kết điều hướng; menu diễn đàn chứa thêm liên kết đến từng phòng. -->
+    <nav class="navbar">
+        <!-- Liên kết đến các trang chính trong website. -->
+        <a href="trang-chu.html">Trang chủ</a>
+        <a href="quy-dinh-nhom.html">Quy định</a>
+        <a class="active" href="thanh-vien-nhom.html">Thành viên</a>
+        <a href="thong-bao.html">Thông báo</a>
+        <a href="dien-dan/dien-dan.html">Diễn đàn</a>
+
+        </div>
+    </nav>
+</header>
+
+<!-- Nội dung chính của trang danh sách thành viên. -->
+<main class="page-container">
+
+    <!-- Tiêu đề trang và gợi ý cho người dùng nhấn vào thẻ để xem hồ sơ chi tiết. -->
+    <div class="page-title">
+        <span>OUR MEMBERS</span>
+        <h1>THÀNH VIÊN NỔI BẬT CỦA NHÓM</h1>
+        <p class="member-hint">Click để xem thông tin❤️</p>
+    </div>
+
+    <div class="content-toolbar">
+        <p class="content-status" id="memberStatus" role="status" aria-live="polite"></p>
+        <button class="manage-button" id="openMemberDialog" type="button">＋ Thêm thành viên</button>
+    </div>
+
+    <!-- Lưới các thẻ thành viên; mỗi thẻ là nút để có thể mở cửa sổ hồ sơ khi nhấn. -->
+    <div class="members-container">
+
+        <!-- Hồ sơ thành viên thứ nhất. Các thuộc tính data-* lưu dữ liệu để thanh-vien.js đưa vào cửa sổ chi tiết. -->
+        <button class="member-card member-card-leader"
+            data-member-id="default-member-leader"
+            data-name="Nguyễn Văn A"
+            data-nickname="Đại ca"
+            data-role="Nhóm trưởng"
+            data-hobby="Chơi game, nghe nhạc"
+            data-description="Là người đứng đầu nhóm, có trách nhiệm quản lý, tổ chức hoạt động và hỗ trợ các thành viên.">
+
+            <span class="leader-crown" aria-hidden="true">👑</span>
+            <!-- Thông tin tóm tắt luôn hiện trên thẻ; biểu tượng cũng được dùng làm ảnh đại diện trong cửa sổ hồ sơ. -->
+            <div class="member-avatar">👑</div>
+            <h2>Nguyễn Văn A</h2>
+            <p class="nickname">Biệt danh: Đại ca</p>
+            <span class="member-role">Nhóm trưởng</span>
+            <span class="view-detail">Xem hồ sơ →</span>
+        </button>
+
+        <!-- Hồ sơ thành viên thứ hai; nội dung data-* được dùng để điền các trường tương ứng khi mở hồ sơ. -->
+        <button class="member-card"
+            data-member-id="default-member-hychanne"
+            data-name="HyChanne"
+            data-nickname="rắn độc"
+            data-role="Thành viên"
+            data-hobby="đâm sau lưng người khác , đâm bạn bè , cắn người khác"
+            data-description="người lười nhất nhóm hay ăn vạ ">
+
+            <!-- Biểu tượng, tên, biệt danh, vai trò và lời nhắc mở hồ sơ của thành viên. -->
+            <div class="member-avatar">😎</div>
+            <h2>HyChanne</h2>
+            <p class="nickname">Biệt danh: rắn độc</p>
+            <span class="member-role">Thành viên</span>
+            <span class="view-detail">Xem hồ sơ →</span>
+        </button>
+
+        <!-- Hồ sơ thành viên thứ ba; giữ cùng cấu trúc để JavaScript xử lý thống nhất. -->
+        <button class="member-card"
+            data-member-id="default-member-le-van-c"
+            data-name="Lê Văn C"
+            data-nickname="Lửa"
+            data-role="Thành viên"
+            data-hobby="Đá bóng, chơi game"
+            data-description="Năng động, nhiệt tình và luôn sẵn sàng tham gia các hoạt động chung của nhóm.">
+
+            <!-- Thông tin tóm tắt hiển thị trực tiếp trên thẻ thành viên. -->
+            <div class="member-avatar">🔥</div>
+            <h2>Lê Văn C</h2>
+            <p class="nickname">Biệt danh: Lửa</p>
+            <span class="member-role">Thành viên</span>
+            <span class="view-detail">Xem hồ sơ →</span>
+        </button>
+
+        <!-- Hồ sơ thành viên thứ tư; các trường data-* cung cấp dữ liệu cho cửa sổ chi tiết. -->
+        <button class="member-card"
+            data-member-id="default-member-pham-van-d"
+            data-name="Phạm Văn D"
+            data-nickname="Panda"
+            data-role="Thành viên"
+            data-hobby="Nghe nhạc, đọc truyện"
+            data-description="Một người thân thiện, vui vẻ và luôn giúp đỡ mọi người khi cần thiết.">
+
+            <!-- Thông tin tóm tắt hiển thị trực tiếp trên thẻ thành viên. -->
+            <div class="member-avatar">🐼</div>
+            <h2>Phạm Văn D</h2>
+            <p class="nickname">Biệt danh: Panda</p>
+            <span class="member-role">Thành viên</span>
+            <span class="view-detail">Xem hồ sơ →</span>
+        </button>
+
+    </div>
+
+</main>
+
+<dialog class="editor-dialog" id="memberDialog" aria-labelledby="memberDialogTitle">
+    <div class="editor-dialog-header">
+        <h2 id="memberDialogTitle">Thêm thành viên mới</h2>
+        <button class="editor-close-button" id="closeMemberDialog" type="button" aria-label="Đóng">×</button>
+    </div>
+    <form class="editor-form" id="memberForm">
+        <label for="newMemberName">Tên thành viên</label>
+        <input id="newMemberName" name="name" type="text" maxlength="60"
+               placeholder="Nhập tên thành viên..." required>
+
+        <label for="newMemberNickname">Biệt danh</label>
+        <input id="newMemberNickname" name="nickname" type="text" maxlength="60"
+               placeholder="Nhập biệt danh...">
+
+        <label for="newMemberRole">Vai trò</label>
+        <input id="newMemberRole" name="role" type="text" maxlength="60"
+               value="Thành viên" required>
+
+        <label for="newMemberAvatar">Biểu tượng đại diện (emoji)</label>
+        <input id="newMemberAvatar" name="avatar" type="text" maxlength="8" value="🙂"
+               placeholder="Ví dụ: 🙂">
+
+        <label for="newMemberHobby">Sở thích</label>
+        <input id="newMemberHobby" name="hobby" type="text" maxlength="160"
+               placeholder="Nhập sở thích...">
+
+        <label for="newMemberDescription">Giới thiệu</label>
+        <textarea id="newMemberDescription" name="description" rows="3" maxlength="500"
+                  placeholder="Giới thiệu ngắn về thành viên..."></textarea>
+
+        <p class="editor-form-message" id="memberFormMessage" role="status" aria-live="polite"></p>
+        <div class="editor-form-actions">
+            <button class="editor-cancel-button" id="cancelMember" type="button">Hủy</button>
+            <button class="manage-button" id="saveMemberButton" type="submit">Thêm thành viên</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- Cửa sổ hồ sơ dùng chung cho mọi thành viên; JavaScript sẽ hiển thị cửa sổ và thay dữ liệu theo thẻ được chọn. -->
+<div class="member-modal" id="memberModal">
+
+    <!-- Khung nội dung bên trong cửa sổ hồ sơ. -->
+    <div class="modal-content">
+
+        <!-- Nút đóng ở đầu khung; id được thanh-vien.js dùng để gắn sự kiện. -->
+        <button class="close-modal" id="closeModal">×</button>
+
+        <!-- Các phần tử có id bên dưới là vị trí để JavaScript cập nhật dữ liệu thành viên đã chọn. -->
+        <div class="modal-avatar" id="modalAvatar">👑</div>
+
+        <span class="modal-label">MEMBER PROFILE</span>
+
+        <h2 id="modalName">Tên thành viên</h2>
+
+        <span class="modal-role" id="modalRole">Chức vụ</span>
+
+        <!-- Nhóm thông tin chi tiết: biệt danh, sở thích và phần giới thiệu. -->
+        <div class="modal-info">
+            <div class="info-item">
+                <span>🏷️ Biệt danh</span>
+                <p id="modalNickname"></p>
+            </div>
+
+            <div class="info-item">
+                <span>❤️ Sở thích</span>
+                <p id="modalHobby"></p>
+            </div>
+
+            <div class="info-item">
+                <span>📝 Giới thiệu</span>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="modal-button" id="editProfileMember" type="button"
+                    aria-label="Sửa thành viên">Sửa thông tin</button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Chân trang của website. -->
+<footer>
+    <p>© 2026 ORANGE'S HOUSE | nhóm giao lưu vui vẻ</p>
+    <p>mọi người có thể tham gia nhóm discor hoặc message cảu nhóm để giao lưu thêm</p>
+</footer>
+</body>
+</html>

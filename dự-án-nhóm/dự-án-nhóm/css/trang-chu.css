@@ -1,0 +1,562 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Phần hero: bố cục mở đầu trang chủ, gồm chữ giới thiệu và hình minh họa ở hai bên. */
+.hero {
+    position: relative;
+    min-height: 570px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    overflow: hidden;
+    background: #FFF7ED;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../Images/home.png") center/cover no-repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Đưa nội dung hero lên trên ảnh nền để chữ và nút luôn rõ, dễ tương tác. */
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Khung nội dung hero: căn giữa và chia thành 2 cột. */
+.hero-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    animation: hienLen 1s ease;
+}
+
+/* Khối chứa phần văn bản bên trái. */
+.hero-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Nhãn nhỏ, dùng cho tên chủ đề hoặc tag. */
+.tag {
+    color: var(--cam);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+/* Tiêu đề chính trong hero; clamp giữ cỡ chữ trong khoảng 35px đến 55px tùy màn hình. */
+.hero h1 {
+    font-size: clamp(42px, 5.5vw, 66px);
+    line-height: 1.2;
+    margin: 20px 0;
+    color: #292524;
+}
+
+/* Tách chữ "ORANGE'S HOUSE" thành dòng mới và tô màu cam. */
+.hero h1 span {
+    display: block;
+    color: #C2410C;
+}
+
+/* Khối lời chào màu nâu cam, nổi bật dưới tiêu đề. */
+.hero h2 {
+    display: inline-block;
+    margin: 12px 0 26px;
+    padding: 8px 18px;
+    border-radius: 12px;
+    font-size: clamp(24px, 3vw, 32px);
+    color: #7C2D12;
+}
+
+/* Định dạng đoạn mô tả phụ trong hero nếu trang có thêm nội dung này. */
+.hero-content p {
+    color: #78716C;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+/* Phần hình minh họa bên phải hero. */
+.hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    width: min(100%, 420px);
+    flex-shrink: 0;
+}
+
+/* Vòng tròn chứa logo, có màu cam và chuyển động nhẹ. */
+.orange-circle {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: none;
+    animation: bay 3s infinite ease-in-out;
+}
+
+/* Giữ đúng tỷ lệ logo và tạo bóng nhẹ để tách logo khỏi nền phía sau. */
+.orange-circle img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+/* Chữ chạy dưới logo. */
+.floating-text {
+    margin-top: 25px;
+    color: #C75C12;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 150%;
+}
+
+/* Khu vực giới thiệu nhóm. */
+.about {
+    padding: 88px 8%;
+    text-align: center;
+    scroll-margin-top: 90px;
+}
+
+.features {
+    padding: 70px 8% 80px;
+    text-align: center;
+    background: #FFF7ED;
+    scroll-margin-top: 90px;
+}
+
+.features-forum {
+    background: #FFFFFF;
+}
+
+.section-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 84px;
+    padding: 40px 10%;
+    background: linear-gradient(180deg, #FFFBF5, #FFF0DD);
+    border-block: 1px solid #F3E2D2;
+}
+
+.section-tabs a {
+    display: flex;
+    flex: 0 1 220px;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 12px 22px;
+    border: 1px solid #F3D1B4;
+    border-radius: 16px;
+    background: #FFFFFF;
+    color: #9A3412;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(90, 47, 18, 0.08);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+        box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.section-tabs a::before {
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #FDBA74;
+    content: "";
+}
+
+.section-tabs a:hover {
+    transform: translateY(-2px);
+    border-color: #F97316;
+    background: linear-gradient(135deg, #F97316, #FB923C);
+    color: white;
+    box-shadow: 0 8px 18px rgba(249, 115, 22, 0.24);
+}
+
+.section-tabs a:hover::before {
+    background: white;
+}
+
+.section-tabs a:focus-visible {
+    outline: 3px solid #FDBA74;
+    outline-offset: 3px;
+}
+
+.about .section-title span {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #FFEDD5;
+    color: #C75C12;
+}
+
+.about .section-title h2 {
+    margin: 14px 0 0;
+    color: #292524;
+    font-size: clamp(30px, 4vw, 40px);
+}
+
+/* Tiêu đề nhỏ trên mỗi section. */
+.section-title span {
+    color: var(--cam);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Tiêu đề chính section. */
+.section-title h2 {
+    font-size: 35px;
+    margin: 10px 0;
+}
+
+/* Màu chữ phụ cho phần mô tả nằm dưới tiêu đề section. */
+.section-title p {
+    color: #78716C;
+}
+
+/* Grid ba thẻ giới thiệu. */
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 38px;
+}
+
+/* Dành hàng riêng cho phần giới thiệu đầy đủ của nhóm. */
+.about-card:first-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 24px;
+    padding: 32px 38px;
+    text-align: left;
+    background: linear-gradient(120deg, #FFF0DD, #FFFAF4);
+}
+
+/* Các thẻ nội dung có nền sáng, viền nhẹ và bóng đổ mềm. */
+.about-card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px 26px;
+    border: 1px solid #F3E2D2;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(90, 47, 18, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-card::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, #F97316, #FDBA74);
+    content: "";
+}
+
+/* Hover nhẹ để nhấn tương tác mà không làm thẻ dịch chuyển quá nhiều. */
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(249, 115, 22, 0.15);
+}
+
+.card-icon {
+    display: grid;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 16px;
+    place-items: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #FFF0DD, #FED7AA);
+    font-size: 36px;
+}
+
+.about-card:first-child .card-icon {
+    grid-row: 1 / span 2;
+    width: 82px;
+    height: 82px;
+    margin: 0;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 8px 20px rgba(199, 92, 18, 0.1);
+}
+
+/* Tạo khoảng cách quanh tên chủ đề và dùng màu cam để nhấn mạnh. */
+.about-card h3 {
+    margin: 0 0 10px;
+    color: #C75C12;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.about-card p {
+    color: #78716C;
+    line-height: 1.75;
+}
+
+.about-card:first-child h3 {
+    margin-bottom: 8px;
+    font-size: 23px;
+}
+
+.about-card:not(:first-child) {
+    text-align: center;
+}
+
+.about-card-goal {
+    background: linear-gradient(145deg, #FFFFFF, #FFFAE8);
+}
+
+.about-card-goal::before {
+    background: linear-gradient(90deg, #F59E0B, #FCD34D);
+}
+
+.about-card-goal .card-icon {
+    background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+}
+
+.about-card-goal h3 {
+    color: #A16207;
+}
+
+.about-card-values {
+    background: linear-gradient(145deg, #FFFFFF, #FFF1F2);
+}
+
+.about-card-values::before {
+    background: linear-gradient(90deg, #F43F5E, #FDA4AF);
+}
+
+.about-card-values .card-icon {
+    background: linear-gradient(135deg, #FFE4E6, #FECDD3);
+}
+
+.about-card-values h3 {
+    color: #BE123C;
+}
+
+.about-card-entertainment {
+    background: linear-gradient(145deg, #FFFFFF, #F5F3FF);
+}
+
+.about-card-entertainment::before {
+    background: linear-gradient(90deg, #8B5CF6, #C4B5FD);
+}
+
+.about-card-entertainment .card-icon {
+    background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+}
+
+.about-card-entertainment h3 {
+    color: #6D28D9;
+}
+
+/* Khối kêu gọi tham gia, dùng nền chuyển sắc và căn giữa nội dung. */
+.welcome {
+    margin: 20px 8% 60px;
+    padding: 50px 20px;
+    border-radius: 25px;
+    background: linear-gradient(120deg, #e0c1ac, #fa8f38);
+    color: white;
+    text-align: center;
+}
+
+.welcome h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    margin-bottom: 25px;
+}
+
+.welcome .btn-primary {
+    background: white;
+    color: var(--cam);
+}
+
+.feature-card {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1000px;
+    gap: 22px;
+    margin: 38px auto 0;
+    padding: 30px;
+    border: 1px solid #F3E2D2;
+    border-radius: 22px;
+    background: white;
+    box-shadow: 0 10px 28px rgba(90, 47, 18, 0.07);
+    text-align: left;
+}
+
+.feature-icon {
+    display: grid;
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    place-items: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #FFF0DD, #FED7AA);
+    font-size: 32px;
+}
+
+.feature-copy {
+    min-width: 0;
+}
+
+.feature-label {
+    color: #C75C12;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.feature-copy h3 {
+    margin: 8px 0 10px;
+    color: #292524;
+    font-size: 22px;
+}
+
+.feature-copy p {
+    margin: 0 0 18px;
+    color: #78716C;
+    line-height: 1.75;
+}
+
+.feature-link {
+    color: #C75C12;
+    font-weight: bold;
+}
+
+.feature-link:hover {
+    color: #9A3412;
+    text-decoration: underline;
+}
+
+.feature-link:focus-visible {
+    outline: 3px solid #FDBA74;
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Chuyển động lên xuống nhẹ cho logo trong phần hero. */
+@keyframes bay {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Hiệu ứng xuất hiện: nội dung bắt đầu thấp và mờ, sau đó trượt lên và hiện rõ. */
+@keyframes hienLen {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Điều chỉnh bố cục cho màn hình rộng tối đa 768px như điện thoại và máy tính bảng nhỏ. */
+@media (max-width: 768px) {
+    /* Xếp phần hero theo chiều dọc và căn giữa chữ khi không đủ chiều ngang. */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Đưa logo và khẩu hiệu lên trước phần chào mừng; giữ các nút sau lời chào. */
+    .hero-content {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    .hero-image {
+        margin-left: 0;
+        order: -1;
+    }
+
+    /* Thu nhỏ logo để vừa với màn hình hẹp. */
+    .orange-circle {
+        width: 200px;
+        height: 200px;
+        font-size: 100px;
+    }
+
+    /* Xếp các thẻ giới thiệu thành một cột để nội dung dễ đọc. */
+    .about-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card:first-child {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 28px 24px;
+        text-align: center;
+    }
+
+    .about-card:first-child .card-icon {
+        grid-row: auto;
+        margin: 0 auto 16px;
+    }
+
+    /* Giảm cỡ tiêu đề lời kêu gọi để tránh tràn dòng. */
+    .welcome h2 {
+        font-size: 23px;
+    }
+
+    .feature-card {
+        padding: 26px 22px;
+    }
+
+    .section-tabs a {
+        flex: 1;
+        padding: 14px 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .section-tabs a {
+        transition: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-tabs a {
+        min-width: 0;
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+}
